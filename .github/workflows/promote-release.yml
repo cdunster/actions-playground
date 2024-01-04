@@ -8,7 +8,7 @@ on:
 jobs:
   create-tag:
     name: Crate a tag based on the branch name
-    if: ${{ github.event.pull_request.merged && startsWith(github.event.pull_request.head.ref, 'release/') }}
+    if: ${{ github.event.pull_request.merged && ( startsWith(github.event.pull_request.head.ref, 'release/') || startsWith(github.event.pull_request.head.ref, 'hotfix/') ) }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
