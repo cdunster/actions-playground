@@ -18,6 +18,9 @@ jobs:
         shell: bash
         run: echo "version=${GITHUB_HEAD_REF##*\/}" >> $GITHUB_OUTPUT
 
+      - name: Get latest version from tag
+        uses: actions-ecosystem/action-get-latest-tag@v1
+
       - name: Create release tag
         uses: actions-ecosystem/action-push-tag@v1
         with:
