@@ -1,0 +1,24 @@
+name: Promote Release
+
+on:
+  pull_request:
+    branches: [ "main" ]
+    types: [ "closed" ]
+
+jobs:
+  create-tag:
+    name: Crate a tag based on the branch name
+    if: ${{ github.event.pull_request.merged && startsWith(github.event.pull_request.head.ref, 'release/') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get version from branch
+        id: branch-version
+        shell: bash
+        run: echo "version=${GITHUB_HEAD_REF##*\/}" >> $GITHUB_OUTPUT
+
+      - name: Create release tag
+        uses: actions-ecosystem/action-push-tag@v1
+        with:
+          tag: ${{ steps.branch-version.outputs.version }}
