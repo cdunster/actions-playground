@@ -15,6 +15,7 @@ tag_prefix = "v"
 [git_hooks]
 
 [commit_types]
+release = { changelog_title = "", omit_from_changelog = true }
 
 [changelog]
 path = "CHANGELOG.md"

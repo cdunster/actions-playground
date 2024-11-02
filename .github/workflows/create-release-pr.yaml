@@ -26,4 +26,4 @@ jobs:
         with:
           title: Release ${{ steps.release.outputs.version }}
           branch: release/${{ steps.release.outputs.version }}
-          commit-message: "chore(release): bump to ${{ steps.release.outputs.version }}"
+          commit-message: "release: bump to ${{ steps.release.outputs.version }}"
